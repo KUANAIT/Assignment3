@@ -36,9 +36,3 @@ public class UserDAOTest {
         }
     }
 
-    public void closeConnection() throws SQLException {
-        if (conn != null) {
-            conn.close();
-        }
-    }
-}
