@@ -1,4 +1,6 @@
+import entities.CourseDATest;
 import entities.User;
+import entities.UserDAOTest;
 
 import java.sql.*;
 
@@ -8,12 +10,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         Connection con = null;
         ResultSet rs = null;
         Statement statement = null;
         ArrayList<User> users = new ArrayList<User>();
+        UserDAOTest test = new UserDAOTest();
+        test.testSaveAndFind();
+        CourseDATest test2 = new CourseDATest();
+        test2.testSaveAndFind();
+
+
         try {
             con = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
             statement = con.createStatement();
@@ -31,6 +39,8 @@ public class Main {
         catch (SQLException e){
             System.out.println("Connection error " + e.getMessage());
         }
+
+
         finally {
             try{
                 if (rs != null) {

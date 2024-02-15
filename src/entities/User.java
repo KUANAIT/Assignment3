@@ -15,7 +15,11 @@ public class User {
     private int groupNumber;
     private double attendance;
     public User(int id, String name, String surname, int groupNumber, double attendance) {
-
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.groupNumber = groupNumber;
+        this.attendance = attendance;
     }
 
     public String toString(){
