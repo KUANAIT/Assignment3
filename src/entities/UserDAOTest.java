@@ -13,7 +13,7 @@ public class UserDAOTest {
     }
 
     public void testSaveAndFind() throws SQLException {
-        User user = new User(0, "Aitzhanov", "Kuanysh", 1, 100.0);
+        User user = new User(0, "Mendeke", "GDEti", 1, 100.0);
 
         userDao.save(user);
         System.out.println("Saved user: " + user);

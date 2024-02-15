@@ -15,7 +15,7 @@ public class CourseDATest {
 
     public void testSaveAndFind() throws SQLException {
         // Create a course
-        Course course = new Course(0, "Test Course", "This is a test course.");
+        Course course = new Course(0, "OOP", "OOP");
 
         // Save the course
         courseDao.save(course);

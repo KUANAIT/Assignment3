@@ -1,3 +1,4 @@
+import entities.AttendanceRecordDATest;
 import entities.CourseDATest;
 import entities.User;
 import entities.UserDAOTest;
@@ -20,6 +21,8 @@ public class Main {
         test.testSaveAndFind();
         CourseDATest test2 = new CourseDATest();
         test2.testSaveAndFind();
+        AttendanceRecordDATest test3 = new AttendanceRecordDATest();
+        test3.testSaveAndFind();
 
 
         try {
