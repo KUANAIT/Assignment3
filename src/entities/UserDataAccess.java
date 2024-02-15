@@ -20,7 +20,31 @@ public class UserDataAccess {
         }
     }
 
+    public void save(User user) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO students (name, surname, groupNumber, attendance) VALUES (?, ?, ?, ?)");
+        stmt.setString(1, user.getName());
+        stmt.setString(2, user.getSurname());
+        stmt.setInt(3, user.getGroupNumber());
+        stmt.setDouble(4, user.getAttendance());
+        stmt.executeUpdate();
+    }
 
+    public void update(User user) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("UPDATE students SET name = ?, surname = ?, groupNumber = ?, attendance = ? WHERE id = ?");
+        stmt.setString(1, user.getName());
+        stmt.setString(2, user.getSurname());
+        stmt.setInt(3, user.getGroupNumber());
+        stmt.setDouble(4, user.getAttendance());
+        stmt.setInt(5, user.getId());
+        stmt.executeUpdate();
+    }
+
+    public void delete(int id) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM students WHERE id = ?");
+        stmt.setInt(1, id);
+        stmt.executeUpdate();
+    }
+}
 
 
 
