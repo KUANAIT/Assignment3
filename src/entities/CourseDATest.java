@@ -8,7 +8,6 @@ public class CourseDATest {
     private CourseDA courseDao;
 
     public CourseDATest() throws SQLException {
-        // Set up the database connection and the DAO
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
         courseDao = new CourseDA(conn);
@@ -47,7 +46,6 @@ public class CourseDATest {
     }
 
     public void closeConnection() throws SQLException {
-        // Close the database connection
         if (conn != null) {
             conn.close();
         }

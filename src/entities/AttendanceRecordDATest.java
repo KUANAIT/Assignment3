@@ -11,7 +11,6 @@ public class AttendanceRecordDATest {
     private AttendanceRecordDA attendanceRecordDao;
 
     public AttendanceRecordDATest() throws SQLException {
-        // Set up the database connection and the DAO
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
         attendanceRecordDao = new AttendanceRecordDA(conn);
@@ -64,7 +63,6 @@ public class AttendanceRecordDATest {
     }
 
     public void closeConnection() throws SQLException {
-        // Close the database connection
         if (conn != null) {
             conn.close();
         }
