@@ -73,17 +73,14 @@ public class Main {
 
         switch (choice) {
             case 1:
-                // Call the method to modify the User table
                 UserDAOTest userTest = new UserDAOTest();
                 userTest.testSaveAndFind();
                 break;
             case 2:
-                // Call the method to modify the Course table
                 CourseDATest courseTest = new CourseDATest();
                 courseTest.testSaveAndFind();
                 break;
             case 3:
-                // Call the method to modify the Attendance Record table
                 AttendanceRecordDATest attendanceTest = new AttendanceRecordDATest();
                 attendanceTest.testSaveAndFind();
                 break;
