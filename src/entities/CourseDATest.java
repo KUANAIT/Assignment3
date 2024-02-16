@@ -1,6 +1,7 @@
 package entities;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class CourseDATest {
     private Connection conn;
@@ -14,18 +15,22 @@ public class CourseDATest {
     }
 
     public void testSaveAndFind() throws SQLException {
-        // Create a course
-        Course course = new Course(0, "OOP", "OOP");
+        Scanner scanner = new Scanner(System.in);
 
-        // Save the course
+        System.out.println("Enter course details:");
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+
+        Course course = new Course(0, name, description);
+
         courseDao.save(course);
         System.out.println("Saved course: " + course);
 
-        // Retrieve the course
         Course retrievedCourse = courseDao.find(course.getId());
         System.out.println("Retrieved course: " + retrievedCourse);
 
-        // Check that the retrieved course is not null and has the expected properties
         if (retrievedCourse != null) {
             System.out.println("Retrieved course is not null");
             if (course.getName().equals(retrievedCourse.getName()) &&
@@ -37,6 +42,8 @@ public class CourseDATest {
         } else {
             System.out.println("Retrieved course is null");
         }
+
+        scanner.close();
     }
 
     public void closeConnection() throws SQLException {
