@@ -13,5 +13,15 @@ public class Course {
     private int id;
     private String name;
     private String description;
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name +
+                ", description='" + description +
+                '}';
+    }
 }
+
+
 

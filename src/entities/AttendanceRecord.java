@@ -16,4 +16,15 @@ public class AttendanceRecord {
     private int courseId;
     private LocalDate date;
     private boolean present;
+
+    @Override
+    public String toString() {
+        return "AttendanceRecord{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", courseId=" + courseId +
+                ", date=" + date +
+                ", present=" + present +
+                '}';
+    }
 }

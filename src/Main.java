@@ -25,16 +25,6 @@ public class Main {
         try {
             con = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
             statement = con.createStatement();
-            rs = statement.executeQuery("SELECT id, name, surname,groupnumber, attendance FROM students ORDER BY id ");
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String surname = rs.getString("surname");
-                int groupNumber = rs.getInt("groupNumber");
-                double attendence = rs.getDouble("attendance");
-                User user = new User(id, name, surname,groupNumber, attendence);
-                users.add(user);
-            }
         }
         catch (SQLException e){
             System.out.println("Connection error " + e.getMessage());
