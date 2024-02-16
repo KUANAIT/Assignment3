@@ -2,6 +2,7 @@ package entities;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class AttendanceRecordDATest {
     private Connection conn;
@@ -15,18 +16,24 @@ public class AttendanceRecordDATest {
     }
 
     public void testSaveAndFind() throws SQLException {
-        // Create an attendance record
-        AttendanceRecord record = new AttendanceRecord(0, 5, 1, LocalDate.now(), true);
+        Scanner scanner = new Scanner(System.in);
 
-        // Save the attendance record
+        System.out.println("Enter attendance record details:");
+        System.out.print("User ID: ");
+        int userId = scanner.nextInt();
+        System.out.print("Course ID: ");
+        int courseId = scanner.nextInt();
+        System.out.print("Is present (true/false): ");
+        boolean isPresent = scanner.nextBoolean();
+
+        AttendanceRecord record = new AttendanceRecord(0, userId, courseId, LocalDate.now(), isPresent);
+
         attendanceRecordDao.save(record);
         System.out.println("Saved attendance record: " + record);
 
-        // Retrieve the attendance record
         AttendanceRecord retrievedRecord = attendanceRecordDao.find(record.getId());
         System.out.println("Retrieved attendance record: " + retrievedRecord);
 
-        // Check that the retrieved attendance record is not null and has the expected properties
         if (retrievedRecord != null) {
             System.out.println("Retrieved attendance record is not null");
             if (record.getUserId() == retrievedRecord.getUserId() &&
@@ -40,6 +47,8 @@ public class AttendanceRecordDATest {
         } else {
             System.out.println("Retrieved attendance record is null");
         }
+
+        scanner.close();
     }
 
     public void closeConnection() throws SQLException {
