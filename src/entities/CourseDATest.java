@@ -45,6 +45,48 @@ public class CourseDATest {
         scanner.close();
     }
 
+    public void testUpdate() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter course ID to update:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter new course details:");
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+
+        Course course = new Course(id, name, description);
+
+        courseDao.update(course);
+        System.out.println("Updated course: " + course);
+    }
+
+    public void testDelete() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter course ID to delete:");
+        int id = scanner.nextInt();
+
+        courseDao.delete(id);
+        System.out.println("Deleted course with ID: " + id);
+    }
+
+    public void testFind() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter course ID to find:");
+        int id = scanner.nextInt();
+
+        Course course = courseDao.find(id);
+        if (course != null) {
+            System.out.println("Found course: " + course);
+        } else {
+            System.out.println("No course found with ID: " + id);
+        }
+    }
     public void closeConnection() throws SQLException {
         if (conn != null) {
             conn.close();
