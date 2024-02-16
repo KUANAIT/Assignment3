@@ -4,6 +4,7 @@ import entities.User;
 import entities.UserDAOTest;
 
 import java.sql.*;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -17,12 +18,8 @@ public class Main {
         ResultSet rs = null;
         Statement statement = null;
         ArrayList<User> users = new ArrayList<User>();
-        UserDAOTest test = new UserDAOTest();
-        test.testSaveAndFind();
-        CourseDATest test2 = new CourseDATest();
-        test2.testSaveAndFind();
-        AttendanceRecordDATest test3 = new AttendanceRecordDATest();
-        test3.testSaveAndFind();
+        chooseTable();
+
 
 
         try {
@@ -63,5 +60,38 @@ public class Main {
         for(User user : users) {
             System.out.println(user);
         }
+    }
+    public static void chooseTable() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose a table to modify:");
+        System.out.println("1. User");
+        System.out.println("2. Course");
+        System.out.println("3. Attendance Record");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                // Call the method to modify the User table
+                UserDAOTest userTest = new UserDAOTest();
+                userTest.testSaveAndFind();
+                break;
+            case 2:
+                // Call the method to modify the Course table
+                CourseDATest courseTest = new CourseDATest();
+                courseTest.testSaveAndFind();
+                break;
+            case 3:
+                // Call the method to modify the Attendance Record table
+                AttendanceRecordDATest attendanceTest = new AttendanceRecordDATest();
+                attendanceTest.testSaveAndFind();
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter a number between 1 and 3.");
+                break;
+        }
+
+        scanner.close();
     }
 }
