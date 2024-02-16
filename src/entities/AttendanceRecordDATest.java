@@ -3,6 +3,8 @@ package entities;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 
 public class AttendanceRecordDATest {
     private Connection conn;
@@ -20,7 +22,17 @@ public class AttendanceRecordDATest {
 
         System.out.println("Enter attendance record details:");
         System.out.print("User ID: ");
-        int userId = scanner.nextInt();
+        int userId = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                userId = scanner.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("That's not a valid input. Please enter an integer.");
+                scanner.next();
+            }
+        }
         System.out.print("Course ID: ");
         int courseId = scanner.nextInt();
         System.out.print("Is present (true/false): ");
