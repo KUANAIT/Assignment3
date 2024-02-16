@@ -1,6 +1,8 @@
 package entities;
 
 import java.sql.*;
+import java.util.Scanner;
+
 
 public class UserDAOTest {
     private Connection conn;
@@ -13,7 +15,19 @@ public class UserDAOTest {
     }
 
     public void testSaveAndFind() throws SQLException {
-        User user = new User(0, "Mendeke", "GDEti", 1, 100.0);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter user details:");
+        System.out.print("Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Surname: ");
+        String surname = scanner.nextLine();
+        System.out.print("Group Number: ");
+        int groupNumber = scanner.nextInt();
+        System.out.print("Attendance: ");
+        double attendance = scanner.nextDouble();
+
+        User user = new User(0, name, surname, groupNumber, attendance);
 
         userDao.save(user);
         System.out.println("Saved user: " + user);
