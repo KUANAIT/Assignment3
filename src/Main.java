@@ -92,6 +92,48 @@ public class Main {
         System.out.println("4. Find");
 
         int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                if (test instanceof UserDAOTest) {
+                    ((UserDAOTest) test).testSaveAndFind();
+                } else if (test instanceof CourseDATest) {
+                    ((CourseDATest) test).testSaveAndFind();
+                } else if (test instanceof AttendanceRecordDATest) {
+                    ((AttendanceRecordDATest) test).testSaveAndFind();
+                }
+                break;
+            case 2:
+                if (test instanceof UserDAOTest) {
+                    ((UserDAOTest) test).testUpdate();
+                } else if (test instanceof CourseDATest) {
+                    ((CourseDATest) test).testUpdate();
+                } else if (test instanceof AttendanceRecordDATest) {
+                    ((AttendanceRecordDATest) test).testUpdate();
+                }
+                break;
+            case 3:
+                if (test instanceof UserDAOTest) {
+                    ((UserDAOTest) test).testDelete();
+                } else if (test instanceof CourseDATest) {
+                    ((CourseDATest) test).testDelete();
+                } else if (test instanceof AttendanceRecordDATest) {
+                    ((AttendanceRecordDATest) test).testDelete();
+                }
+                break;
+            case 4:
+                if (test instanceof UserDAOTest) {
+                    ((UserDAOTest) test).testFind();
+                } else if (test instanceof CourseDATest) {
+                    ((CourseDATest) test).testFind();
+                } else if (test instanceof AttendanceRecordDATest) {
+                    ((AttendanceRecordDATest) test).testFind();
+                }
+                break;
+            default:
+                System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                break;
+        }
     }
 }
 
