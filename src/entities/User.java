@@ -14,12 +14,14 @@ public class User {
     private String surname;
     private int groupNumber;
     private double attendance;
+    private boolean retake;
     public User(int id, String name, String surname, int groupNumber, double attendance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.groupNumber = groupNumber;
         this.attendance = attendance;
+        this.retake = attendance < 50;
     }
 
     public String toString(){
@@ -29,6 +31,7 @@ public class User {
                 ", surname: " + surname +
                 ", groupNumber: " + groupNumber +
                 ",attendance: " + attendance +
+                ",retake: " + retake +
                 "}";
     }
 }

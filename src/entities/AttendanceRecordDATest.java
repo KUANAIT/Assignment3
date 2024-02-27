@@ -67,7 +67,7 @@ public class AttendanceRecordDATest {
 
         System.out.println("Enter attendance record ID to update:");
         int id = scanner.nextInt();
-        scanner.nextLine();  // Consume newline left-over
+        scanner.nextLine();
 
         System.out.println("Enter new attendance record details:");
         System.out.print("User ID: ");

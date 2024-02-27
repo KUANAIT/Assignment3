@@ -97,7 +97,6 @@ public class UserDAOTest {
     }
 
      public void closeConnection() throws SQLException {
-        // Close the database connection
         if (conn != null) {
             conn.close();
         }

@@ -21,21 +21,23 @@ public class UserDataAccess {
     }
 
     public void save(User user) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO students (name, surname, groupNumber, attendance) VALUES (?, ?, ?, ?)");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO students (name, surname, groupNumber, attendance, retake) VALUES (?, ?, ?, ?, ?)");
         stmt.setString(1, user.getName());
         stmt.setString(2, user.getSurname());
         stmt.setInt(3, user.getGroupNumber());
         stmt.setDouble(4, user.getAttendance());
+        stmt.setBoolean(5, user.isRetake());
         stmt.executeUpdate();
     }
 
     public void update(User user) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("UPDATE students SET name = ?, surname = ?, groupNumber = ?, attendance = ? WHERE id = ?");
+        PreparedStatement stmt = conn.prepareStatement("UPDATE students SET name = ?, surname = ?, groupNumber = ?, attendance = ?, retake = ? WHERE id = ?");
         stmt.setString(1, user.getName());
         stmt.setString(2, user.getSurname());
         stmt.setInt(3, user.getGroupNumber());
         stmt.setDouble(4, user.getAttendance());
-        stmt.setInt(5, user.getId());
+        stmt.setBoolean(5, user.isRetake());
+        stmt.setInt(6, user.getId());
         stmt.executeUpdate();
     }
 

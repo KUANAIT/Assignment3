@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        String conString = "jdbc:postgresql://localhost:5432/AMS";
+        String conString = "2";
         Connection con = null;
         ResultSet rs = null;
         Statement statement = null;
