@@ -1,17 +1,19 @@
 package entities;
 
+import services.UserService;
+
 import java.sql.*;
 import java.util.Scanner;
 
 
 public class UserDAOTest {
     private Connection conn;
-    private UserDataAccess userDao;
+    private UserService userDao;
 
     public UserDAOTest() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
-        userDao = new UserDataAccess(conn);
+        userDao = new UserService(conn);
     }
 
     public void testSaveAndFind() throws SQLException {

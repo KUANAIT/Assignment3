@@ -1,15 +1,17 @@
-package entities;
+package services;
 
+
+import entities.Course;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CourseDA {
+public class CourseService {
     private Connection conn;
 
-    public CourseDA(Connection conn) {
+    public CourseService(Connection conn) {
         this.conn = conn;
     }
 

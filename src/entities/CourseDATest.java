@@ -1,16 +1,18 @@
 package entities;
 
+import services.CourseService;
+
 import java.sql.*;
 import java.util.Scanner;
 
 public class CourseDATest {
     private Connection conn;
-    private CourseDA courseDao;
+    private CourseService courseDao;
 
     public CourseDATest() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
-        courseDao = new CourseDA(conn);
+        courseDao = new CourseService(conn);
     }
 
     public void testSaveAndFind() throws SQLException {

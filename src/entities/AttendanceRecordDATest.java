@@ -1,5 +1,8 @@
 package entities;
 
+import services.AttendanceRecordService;
+import services.UserService;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -8,12 +11,14 @@ import java.util.InputMismatchException;
 
 public class AttendanceRecordDATest {
     private Connection conn;
-    private AttendanceRecordDA attendanceRecordDao;
+    private AttendanceRecordService attendanceRecordDao;
+    private UserService userService;
 
     public AttendanceRecordDATest() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
-        attendanceRecordDao = new AttendanceRecordDA(conn);
+        attendanceRecordDao = new AttendanceRecordService(conn);
+        userService = new UserService(conn);
     }
 
     public void testSaveAndFind() throws SQLException {
@@ -41,6 +46,10 @@ public class AttendanceRecordDATest {
 
         attendanceRecordDao.save(record);
         System.out.println("Saved attendance record: " + record);
+
+        if (isPresent) {
+            userService.addAttendance(userId, 1.3);
+        }
 
         AttendanceRecord retrievedRecord = attendanceRecordDao.find(record.getId());
         System.out.println("Retrieved attendance record: " + retrievedRecord);

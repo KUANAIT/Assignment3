@@ -1,14 +1,14 @@
-package entities;
+package services;
+
+import entities.AttendanceRecord;
 
 import java.sql.*;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.*;
 
-public class AttendanceRecordDA {
+public class AttendanceRecordService {
     private Connection conn;
 
-    public AttendanceRecordDA(Connection conn) {
+    public AttendanceRecordService(Connection conn) {
         this.conn = conn;
     }
 

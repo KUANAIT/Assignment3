@@ -1,11 +1,13 @@
-package entities;
+package services;
+
+import entities.User;
 
 import java.sql.*;
 
-public class UserDataAccess {
+public class UserService {
     private Connection conn;
 
-    public UserDataAccess(Connection conn) {
+    public UserService(Connection conn) {
         this.conn = conn;
     }
 
@@ -45,6 +47,21 @@ public class UserDataAccess {
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM students WHERE id = ?");
         stmt.setInt(1, id);
         stmt.executeUpdate();
+    }
+
+    public void addAttendance(int userId, double attendanceToAdd) throws SQLException {
+        // Find the user
+        User user = find(userId);
+        if (user != null) {
+            // Add to the attendance
+            double newAttendance = user.getAttendance() + attendanceToAdd;
+            user.setAttendance(newAttendance);
+
+            // Update the user in the database
+            update(user);
+        } else {
+            System.out.println("No user found with ID: " + userId);
+        }
     }
 }
 
