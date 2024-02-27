@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public class CourseDATest {
     private Connection conn;
-    private CourseService courseDao;
+    private CourseService courseService;
 
     public CourseDATest() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
-        courseDao = new CourseService(conn);
+        courseService = new CourseService(conn);
     }
 
     public void testSaveAndFind() throws SQLException {
@@ -26,10 +26,10 @@ public class CourseDATest {
 
         Course course = new Course(0, name, description);
 
-        courseDao.save(course);
+        courseService.save(course);
         System.out.println("Saved course: " + course);
 
-        Course retrievedCourse = courseDao.find(course.getId());
+        Course retrievedCourse = courseService.find(course.getId());
         System.out.println("Retrieved course: " + retrievedCourse);
 
         if (retrievedCourse != null) {
@@ -62,7 +62,7 @@ public class CourseDATest {
 
         Course course = new Course(id, name, description);
 
-        courseDao.update(course);
+        courseService.update(course);
         System.out.println("Updated course: " + course);
     }
 
@@ -72,7 +72,7 @@ public class CourseDATest {
         System.out.println("Enter course ID to delete:");
         int id = scanner.nextInt();
 
-        courseDao.delete(id);
+        courseService.delete(id);
         System.out.println("Deleted course with ID: " + id);
     }
 
@@ -82,7 +82,7 @@ public class CourseDATest {
         System.out.println("Enter course ID to find:");
         int id = scanner.nextInt();
 
-        Course course = courseDao.find(id);
+        Course course = courseService.find(id);
         if (course != null) {
             System.out.println("Found course: " + course);
         } else {

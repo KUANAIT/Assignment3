@@ -11,13 +11,13 @@ import java.util.InputMismatchException;
 
 public class AttendanceRecordDATest {
     private Connection conn;
-    private AttendanceRecordService attendanceRecordDao;
+    private AttendanceRecordService attendanceRecordService;
     private UserService userService;
 
     public AttendanceRecordDATest() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
-        attendanceRecordDao = new AttendanceRecordService(conn);
+        attendanceRecordService = new AttendanceRecordService(conn);
         userService = new UserService(conn);
     }
 
@@ -44,14 +44,14 @@ public class AttendanceRecordDATest {
 
         AttendanceRecord record = new AttendanceRecord(0, userId, courseId, LocalDate.now(), isPresent);
 
-        attendanceRecordDao.save(record);
+        attendanceRecordService.save(record);
         System.out.println("Saved attendance record: " + record);
 
         if (isPresent) {
             userService.addAttendance(userId, 1.3);
         }
 
-        AttendanceRecord retrievedRecord = attendanceRecordDao.find(record.getId());
+        AttendanceRecord retrievedRecord = attendanceRecordService.find(record.getId());
         System.out.println("Retrieved attendance record: " + retrievedRecord);
 
         if (retrievedRecord != null) {
@@ -88,7 +88,7 @@ public class AttendanceRecordDATest {
 
         AttendanceRecord record = new AttendanceRecord(id, userId, courseId, LocalDate.now(), isPresent);
 
-        attendanceRecordDao.update(record);
+        attendanceRecordService.update(record);
         System.out.println("Updated attendance record: " + record);
     }
 
@@ -98,7 +98,7 @@ public class AttendanceRecordDATest {
         System.out.println("Enter attendance record ID to delete:");
         int id = scanner.nextInt();
 
-        attendanceRecordDao.delete(id);
+        attendanceRecordService.delete(id);
         System.out.println("Deleted attendance record with ID: " + id);
     }
 
@@ -108,7 +108,7 @@ public class AttendanceRecordDATest {
         System.out.println("Enter attendance record ID to find:");
         int id = scanner.nextInt();
 
-        AttendanceRecord record = attendanceRecordDao.find(id);
+        AttendanceRecord record = attendanceRecordService.find(id);
         if (record != null) {
             System.out.println("Found attendance record: " + record);
         } else {
