@@ -1,5 +1,6 @@
-package entities;
+package controllers;
 
+import entities.AttendanceRecord;
 import services.AttendanceRecordService;
 import services.UserService;
 
@@ -9,19 +10,19 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 
-public class AttendanceRecordDATest {
+public class AttendanceRecordController {
     private Connection conn;
     private AttendanceRecordService attendanceRecordService;
     private UserService userService;
 
-    public AttendanceRecordDATest() throws SQLException {
+    public AttendanceRecordController() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
         attendanceRecordService = new AttendanceRecordService(conn);
         userService = new UserService(conn);
     }
 
-    public void testSaveAndFind() throws SQLException {
+    public void SaveAndFind() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter attendance record details:");
@@ -71,7 +72,7 @@ public class AttendanceRecordDATest {
         scanner.close();
     }
 
-    public void testUpdate() throws SQLException {
+    public void Update() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter attendance record ID to update:");
@@ -92,7 +93,7 @@ public class AttendanceRecordDATest {
         System.out.println("Updated attendance record: " + record);
     }
 
-    public void testDelete() throws SQLException {
+    public void Delete() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter attendance record ID to delete:");
@@ -102,7 +103,7 @@ public class AttendanceRecordDATest {
         System.out.println("Deleted attendance record with ID: " + id);
     }
 
-    public void testFind() throws SQLException {
+    public void Find() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter attendance record ID to find:");

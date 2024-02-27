@@ -1,8 +1,8 @@
 package services;
 
-import entities.AttendanceRecordDATest;
-import entities.CourseDATest;
-import entities.UserDAOTest;
+import controllers.AttendanceRecordController;
+import controllers.CourseController;
+import controllers.UserController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -20,15 +20,15 @@ public class TableOperationsService {
 
         switch (choice) {
             case 1:
-                UserDAOTest userTest = new UserDAOTest();
+                UserController userTest = new UserController();
                 chooseOperation(userTest);
                 break;
             case 2:
-                CourseDATest courseTest = new CourseDATest();
+                CourseController courseTest = new CourseController();
                 chooseOperation(courseTest);
                 break;
             case 3:
-                AttendanceRecordDATest attendanceTest = new AttendanceRecordDATest();
+                AttendanceRecordController attendanceTest = new AttendanceRecordController();
                 chooseOperation(attendanceTest);
                 break;
             default:
@@ -52,39 +52,39 @@ public class TableOperationsService {
 
         switch (choice) {
             case 1:
-                if (test instanceof UserDAOTest) {
-                    ((UserDAOTest) test).testSaveAndFind();
-                } else if (test instanceof CourseDATest) {
-                    ((CourseDATest) test).testSaveAndFind();
-                } else if (test instanceof AttendanceRecordDATest) {
-                    ((AttendanceRecordDATest) test).testSaveAndFind();
+                if (test instanceof UserController) {
+                    ((UserController) test).SaveAndFind();
+                } else if (test instanceof CourseController) {
+                    ((CourseController) test).SaveAndFind();
+                } else if (test instanceof AttendanceRecordController) {
+                    ((AttendanceRecordController) test).SaveAndFind();
                 }
                 break;
             case 2:
-                if (test instanceof UserDAOTest) {
-                    ((UserDAOTest) test).testUpdate();
-                } else if (test instanceof CourseDATest) {
-                    ((CourseDATest) test).testUpdate();
-                } else if (test instanceof AttendanceRecordDATest) {
-                    ((AttendanceRecordDATest) test).testUpdate();
+                if (test instanceof UserController) {
+                    ((UserController) test).Update();
+                } else if (test instanceof CourseController) {
+                    ((CourseController) test).Update();
+                } else if (test instanceof AttendanceRecordController) {
+                    ((AttendanceRecordController) test).Update();
                 }
                 break;
             case 3:
-                if (test instanceof UserDAOTest) {
-                    ((UserDAOTest) test).testDelete();
-                } else if (test instanceof CourseDATest) {
-                    ((CourseDATest) test).testDelete();
-                } else if (test instanceof AttendanceRecordDATest) {
-                    ((AttendanceRecordDATest) test).testDelete();
+                if (test instanceof UserController) {
+                    ((UserController) test).Delete();
+                } else if (test instanceof CourseController) {
+                    ((CourseController) test).Delete();
+                } else if (test instanceof AttendanceRecordController) {
+                    ((AttendanceRecordController) test).Delete();
                 }
                 break;
             case 4:
-                if (test instanceof UserDAOTest) {
-                    ((UserDAOTest) test).testFind();
-                } else if (test instanceof CourseDATest) {
-                    ((CourseDATest) test).testFind();
-                } else if (test instanceof AttendanceRecordDATest) {
-                    ((AttendanceRecordDATest) test).testFind();
+                if (test instanceof UserController) {
+                    ((UserController) test).Find();
+                } else if (test instanceof CourseController) {
+                    ((CourseController) test).Find();
+                } else if (test instanceof AttendanceRecordController) {
+                    ((AttendanceRecordController) test).Find();
                 }
                 break;
             default:

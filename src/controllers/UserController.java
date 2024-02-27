@@ -1,22 +1,23 @@
-package entities;
+package controllers;
 
+import entities.User;
 import services.UserService;
 
 import java.sql.*;
 import java.util.Scanner;
 
 
-public class UserDAOTest {
+public class UserController {
     private Connection conn;
     private UserService userService;
 
-    public UserDAOTest() throws SQLException {
+    public UserController() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
         userService = new UserService(conn);
     }
 
-    public void testSaveAndFind() throws SQLException {
+    public void SaveAndFind() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user details:");
@@ -51,7 +52,7 @@ public class UserDAOTest {
             System.out.println("Retrieved user is null");
         }
     }
-    public void testUpdate() throws SQLException {
+    public void Update() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user ID to update:");
@@ -74,7 +75,7 @@ public class UserDAOTest {
         System.out.println("Updated user: " + user);
     }
 
-    public void testDelete() throws SQLException {
+    public void Delete() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user ID to delete:");
@@ -84,7 +85,7 @@ public class UserDAOTest {
         System.out.println("Deleted user with ID: " + id);
     }
 
-    public void testFind() throws SQLException {
+    public void Find() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user ID to find:");

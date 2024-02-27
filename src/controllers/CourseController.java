@@ -1,21 +1,22 @@
-package entities;
+package controllers;
 
+import entities.Course;
 import services.CourseService;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class CourseDATest {
+public class CourseController {
     private Connection conn;
     private CourseService courseService;
 
-    public CourseDATest() throws SQLException {
+    public CourseController() throws SQLException {
         String conString = "jdbc:postgresql://localhost:5432/AMS";
         conn = DriverManager.getConnection(conString, "postgres", "qwertyzsdv");
         courseService = new CourseService(conn);
     }
 
-    public void testSaveAndFind() throws SQLException {
+    public void SaveAndFind() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter course details:");
@@ -47,7 +48,7 @@ public class CourseDATest {
         scanner.close();
     }
 
-    public void testUpdate() throws SQLException {
+    public void Update() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter course ID to update:");
@@ -66,7 +67,7 @@ public class CourseDATest {
         System.out.println("Updated course: " + course);
     }
 
-    public void testDelete() throws SQLException {
+    public void Delete() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter course ID to delete:");
@@ -76,7 +77,7 @@ public class CourseDATest {
         System.out.println("Deleted course with ID: " + id);
     }
 
-    public void testFind() throws SQLException {
+    public void Find() throws SQLException {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter course ID to find:");

@@ -1,11 +1,7 @@
-import entities.AttendanceRecordDATest;
-import entities.CourseDATest;
 import entities.User;
-import entities.UserDAOTest;
 import services.TableOperationsService;
 
 import java.sql.*;
-import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.sql.Connection;
