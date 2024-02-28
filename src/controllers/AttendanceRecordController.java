@@ -44,12 +44,13 @@ public class AttendanceRecordController {
         boolean isPresent = scanner.nextBoolean();
 
         AttendanceRecord record = new AttendanceRecord(0, userId, courseId, LocalDate.now(), isPresent);
-
         attendanceRecordService.save(record);
         System.out.println("Saved attendance record: " + record);
 
         if (isPresent) {
             userService.addAttendance(userId, 1.3);
+        } else{
+            userService.addAttendance(userId, -1.3);
         }
 
         AttendanceRecord retrievedRecord = attendanceRecordService.find(record.getId());
