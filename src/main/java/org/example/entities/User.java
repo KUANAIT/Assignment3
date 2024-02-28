@@ -21,7 +21,7 @@ public class User {
         this.surname = surname;
         this.groupNumber = groupNumber;
         this.attendance = attendance;
-        this.retake = attendance < 50;
+        this.retake = retake;
     }
 
     public String toString(){
