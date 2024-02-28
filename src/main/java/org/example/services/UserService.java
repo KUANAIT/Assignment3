@@ -49,7 +49,17 @@ public class UserService {
         stmt.executeUpdate();
     }
 
-    
+    public void addAttendance(int userId, double attendanceToAdd) throws SQLException {
+        User user = find(userId);
+        if (user != null) {
+            double newAttendance = user.getAttendance() + attendanceToAdd;
+            user.setAttendance(newAttendance);
+
+            update(user);
+        } else {
+            System.out.println("No user found with ID: " + userId);
+        }
+    }
 }
 
 
