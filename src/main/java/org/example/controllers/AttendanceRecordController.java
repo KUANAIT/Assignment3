@@ -47,11 +47,7 @@ public class AttendanceRecordController {
         attendanceRecordService.save(record);
         System.out.println("Saved attendance record: " + record);
 
-        if (isPresent) {
-            userService.addAttendance(userId, 1.3);
-        } else{
-            userService.addAttendance(userId, -1.3);
-        }
+        
 
         AttendanceRecord retrievedRecord = attendanceRecordService.find(record.getId());
         System.out.println("Retrieved attendance record: " + retrievedRecord);
