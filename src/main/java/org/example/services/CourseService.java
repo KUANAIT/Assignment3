@@ -1,7 +1,7 @@
-package services;
+package org.example.services;
 
 
-import entities.Course;
+import org.example.entities.Course;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

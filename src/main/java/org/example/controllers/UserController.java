@@ -1,7 +1,7 @@
-package controllers;
+package org.example.controllers;
 
-import entities.User;
-import services.UserService;
+import org.example.entities.User;
+import org.example.services.UserService;
 
 import java.sql.*;
 import java.util.Scanner;

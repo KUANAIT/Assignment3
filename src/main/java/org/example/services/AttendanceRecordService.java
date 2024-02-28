@@ -1,6 +1,6 @@
-package services;
+package org.example.services;
 
-import entities.AttendanceRecord;
+import org.example.entities.AttendanceRecord;
 
 import java.sql.*;
 import java.sql.Date;

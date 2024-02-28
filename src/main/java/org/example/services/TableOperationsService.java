@@ -1,8 +1,8 @@
-package services;
+package org.example.services;
 
-import controllers.AttendanceRecordController;
-import controllers.CourseController;
-import controllers.UserController;
+import org.example.controllers.AttendanceRecordController;
+import org.example.controllers.CourseController;
+import org.example.controllers.UserController;
 
 import java.sql.SQLException;
 import java.util.Scanner;

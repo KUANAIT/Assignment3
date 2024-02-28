@@ -1,7 +1,7 @@
-package controllers;
+package org.example.controllers;
 
-import entities.Course;
-import services.CourseService;
+import org.example.entities.Course;
+import org.example.services.CourseService;
 
 import java.sql.*;
 import java.util.Scanner;

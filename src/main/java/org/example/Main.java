@@ -1,5 +1,7 @@
-import entities.User;
-import services.TableOperationsService;
+package org.example;
+
+import org.example.entities.User;
+import org.example.services.TableOperationsService;
 
 import java.sql.*;
 

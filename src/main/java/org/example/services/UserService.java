@@ -1,6 +1,6 @@
-package services;
+package org.example.services;
 
-import entities.User;
+import org.example.entities.User;
 
 import java.sql.*;
 

@@ -1,8 +1,8 @@
-package controllers;
+package org.example.controllers;
 
-import entities.AttendanceRecord;
-import services.AttendanceRecordService;
-import services.UserService;
+import org.example.entities.AttendanceRecord;
+import org.example.services.AttendanceRecordService;
+import org.example.services.UserService;
 
 import java.sql.*;
 import java.time.LocalDate;
